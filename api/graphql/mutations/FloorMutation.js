@@ -74,11 +74,11 @@ const updateFloor = {
     },
     siteId: {
       name: 'siteId',
-      type: GraphQLInt,
+      type: new GraphQLNonNull(GraphQLInt),
     },
     floorNumber: {
       name: 'floorNumber',
-      type: GraphQLInt,
+      type: new GraphQLNonNull(GraphQLInt),
     },
     wardenRequired: {
       name: 'wardenRequired',
@@ -116,11 +116,11 @@ const updateFloor = {
   ) => {
     const foundFloor = await Floor.findByPk(id);
 
-    if (!foundFloor) {
+    if (!foundFloor || !foundFloor.dataValues) {
       throw new Error(`Floor with id: ${id} not found!`);
     }
 
-    const updatedFloor = merge(foundFloor, {
+    const updatedFloor = merge(foundFloor.dataValues, {
       siteId,
       floorNumber,
       wardenRequired,
@@ -130,7 +130,7 @@ const updateFloor = {
       managerEmail,
     });
 
-    return foundFloor.update(updatedFloor);
+    return await foundFloor.update(updatedFloor);
   },
 };
 

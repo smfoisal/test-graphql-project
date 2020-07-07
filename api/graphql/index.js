@@ -1,10 +1,13 @@
 const { GraphQLSchema, GraphQLObjectType } = require('graphql');
-
-const { siteQuery } = require('./queries');
-const { floorQuery } = require('./queries');
-
-const { createSite, updateSite, deleteSite } = require('./mutations');
-const { createFloor, updateFloor, deleteFloor } = require('./mutations');
+const { siteQuery, floorQuery } = require('./queries');
+const {
+  createSite,
+  updateSite,
+  deleteSite,
+  createFloor,
+  updateFloor,
+  deleteFloor,
+} = require('./mutations');
 
 const RootQuery = new GraphQLObjectType({
   name: 'rootQuery',

@@ -87,7 +87,7 @@ const updateSite = {
     },
     siteName: {
       name: 'siteName',
-      type: GraphQLString,
+      type: new GraphQLNonNull(GraphQLString),
     },
     openingHours: {
       name: 'openingHours',
@@ -144,12 +144,12 @@ const updateSite = {
   ) => {
     const foundSite = await Site.findByPk(id);
 
-    if (!foundSite) {
+    if (!foundSite || !foundSite.dataValues) {
       throw new Error(`Site with id: ${id} not found!`);
     }
+    console.log(foundSite);
 
-    const updatedSite = merge(foundSite, {
-      id,
+    const updatedSite = merge(foundSite.foundSite, {
       siteName,
       openingHours,
       securityContact,
@@ -162,7 +162,7 @@ const updateSite = {
       totalEmployees,
     });
 
-    return foundSite.update(updatedSite);
+    return await foundSite.update(updatedSite);
   },
 };
 
