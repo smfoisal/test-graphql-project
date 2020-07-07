@@ -45,7 +45,7 @@ mutation {
 
 ```
 mutation {
-  createFloor(siteId: 1, floorNumber: 1) {
+  addFloor(siteId: 1, floorNumber: 1) {
     id
     siteId
     floorNumber
