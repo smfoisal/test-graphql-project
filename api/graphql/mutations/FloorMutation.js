@@ -9,9 +9,9 @@ const merge = require('lodash.merge');
 const { FloorType } = require('../types');
 const { Floor } = require('../../models');
 
-const createFloor = {
+const addFloor = {
   type: FloorType,
-  description: 'createFloor',
+  description: 'addFloor',
   args: {
     siteId: {
       name: 'siteId',
@@ -120,8 +120,7 @@ const updateFloor = {
       throw new Error(`Floor with id: ${id} not found!`);
     }
 
-    const updatedFloor = merge(foundFloor.dataValues, {
-      siteId,
+    return await foundFloor.update({
       floorNumber,
       wardenRequired,
       peepsRequired,
@@ -129,8 +128,6 @@ const updateFloor = {
       managerPhone,
       managerEmail,
     });
-
-    return await foundFloor.update(updatedFloor);
   },
 };
 
@@ -161,7 +158,7 @@ const deleteFloor = {
 };
 
 module.exports = {
-  createFloor,
+  addFloor,
   updateFloor,
   deleteFloor,
 };

@@ -1,11 +1,11 @@
 const { createSite, updateSite, deleteSite } = require('./SiteMutation');
-const { createFloor, updateFloor, deleteFloor } = require('./FloorMutation');
+const { addFloor, updateFloor, deleteFloor } = require('./FloorMutation');
 
 module.exports = {
   createSite,
   updateSite,
   deleteSite,
-  createFloor,
+  addFloor,
   updateFloor,
   deleteFloor,
 };

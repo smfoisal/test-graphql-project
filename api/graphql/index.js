@@ -4,7 +4,7 @@ const {
   createSite,
   updateSite,
   deleteSite,
-  createFloor,
+  addFloor,
   updateFloor,
   deleteFloor,
 } = require('./mutations');
@@ -27,7 +27,7 @@ const RootMutation = new GraphQLObjectType({
     createSite,
     updateSite,
     deleteSite,
-    createFloor,
+    addFloor,
     updateFloor,
     deleteFloor,
   }),

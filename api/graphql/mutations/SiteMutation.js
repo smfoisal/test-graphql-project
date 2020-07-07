@@ -147,9 +147,8 @@ const updateSite = {
     if (!foundSite || !foundSite.dataValues) {
       throw new Error(`Site with id: ${id} not found!`);
     }
-    console.log(foundSite);
 
-    const updatedSite = merge(foundSite.foundSite, {
+    return await foundSite.update({
       siteName,
       openingHours,
       securityContact,
@@ -161,8 +160,6 @@ const updateSite = {
       suburb,
       totalEmployees,
     });
-
-    return await foundSite.update(updatedSite);
   },
 };
 
