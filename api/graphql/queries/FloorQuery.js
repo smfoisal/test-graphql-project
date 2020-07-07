@@ -44,7 +44,7 @@ const floorQuery = {
       type: GraphQLString,
     },
   },
-  resolve: (floor, args) => Floor.findAll({ where: args }),
+  resolve: (site, args) => Floor.findAll({ where: args }),
 };
 
 module.exports = { floorQuery };

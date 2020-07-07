@@ -8,13 +8,40 @@ const tableName = 'sites';
 const Site = sequelize.define(
   'Site',
   {
-    site: {
+    siteName: {
       type: Sequelize.STRING,
+    },
+    openingHours: {
+      type: Sequelize.INTEGER,
+    },
+    securityContact: {
+      type: Sequelize.STRING,
+    },
+    address: {
+      type: Sequelize.STRING,
+    },
+    streetAddress: {
+      type: Sequelize.STRING,
+    },
+    zipCode: {
+      type: Sequelize.INTEGER,
+    },
+    state: {
+      type: Sequelize.STRING,
+    },
+    city: {
+      type: Sequelize.STRING,
+    },
+    suburb: {
+      type: Sequelize.STRING,
+    },
+    totalEmployees: {
+      type: Sequelize.INTEGER,
     },
   },
   { tableName },
 );
 
-Floor.hasMany(Floor, { as: 'floors', foreignKey: 'siteId' });
+Site.hasMany(Floor, { as: 'floors', foreignKey: 'siteId' });
 
 module.exports = { Site };
